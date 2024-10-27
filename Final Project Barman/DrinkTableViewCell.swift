@@ -43,36 +43,36 @@ class DrinkTableViewCell: UITableViewCell {
     func setupCell() {
         // The background color of the cell is set to clear.
         backgroundColor = .clear
-
+        
         // The selection style is set to none to prevent the cell from highlighting when selected.
         selectionStyle = .none
-
+        
         // The containerView is configured to provide a semi-transparent black background with rounded corners.
         containerView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         containerView.layer.cornerRadius = 10
         containerView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         // The containerView is added to the content view of the cell.
         contentView.addSubview(containerView)
-
+        
         // The drinkImageView is configured to maintain the aspect ratio of the image, with rounded corners and clipping.
         drinkImageView.contentMode = .scaleAspectFill
         drinkImageView.layer.cornerRadius = 10
         drinkImageView.clipsToBounds = true
         drinkImageView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         // The drinkImageView is added as a subview of the containerView.
         containerView.addSubview(drinkImageView)
-
+        
         // The nameLabel is configured to use the "AvenirNext-DemiBold" font, with white text color and support for multiple lines.
         nameLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 18)
         nameLabel.textColor = .white
         nameLabel.numberOfLines = 0  // Allows multiple lines for long drink names.
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-
+        
         // The nameLabel is added as a subview of the containerView.
         containerView.addSubview(nameLabel)
-
+        
         // Auto-layout constraints are set for the containerView, drinkImageView, and nameLabel.
         NSLayoutConstraint.activate([
             // Constraints for the containerView to provide padding around the cell.
@@ -80,19 +80,24 @@ class DrinkTableViewCell: UITableViewCell {
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-
-            // Fixed size constraints for the drinkImageView to display the image.
+            
+            // Adjust the size constraints for drinkImageView to be more flexible.
+            // Use fixed height, but proportional width to avoid the image becoming too large.
             drinkImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 12),
             drinkImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            drinkImageView.widthAnchor.constraint(equalToConstant: 80),
-            drinkImageView.heightAnchor.constraint(equalToConstant: 80),
-
-            // Constraints for the nameLabel, positioned to the right of the drinkImageView.
+            drinkImageView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.25), // 25% of container's width
+            drinkImageView.heightAnchor.constraint(equalToConstant: 80), // Fixed height to avoid vertical distortion
+            
+            // Adjust nameLabel to take up more space.
             nameLabel.leadingAnchor.constraint(equalTo: drinkImageView.trailingAnchor, constant: 20),
             nameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
             nameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             nameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
         ])
+
+        // Configure the imageView to keep the aspect ratio and avoid overflow
+        drinkImageView.contentMode = .scaleAspectFit
+
     }
 
     // The configure method is used to populate the cell with drink data.

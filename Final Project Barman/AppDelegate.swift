@@ -1,16 +1,10 @@
+// AppDelegate.swift
 //
 //  AppDelegate.swift
-//  Project Barman
+//  Final Project Barman
 //
 //  Created by Carlos Ignacio Padilla Herrera on 26/10/24.
-//
-//  Description: No Description Available
-//
-//  Created for: Enigma Unit
-//  Version: 1.0.0
-//  Copyright © 2024 Enigma Unit. All rights reserved.
-//
-
+// AppDelegate.swift
 
 import UIKit
 

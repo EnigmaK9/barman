@@ -25,9 +25,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTh-AH-8SG">
-                                <rect key="frame" x="108" y="59" width="177" height="113"/>
+                                <rect key="frame" x="126.00000000000001" y="59" width="141.33333333333337" height="113"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="177" id="RJc-hu-6Ef"/>
                                     <constraint firstAttribute="height" constant="113" id="Zf7-mi-ryO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="44"/>
