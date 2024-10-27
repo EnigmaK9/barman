@@ -15,6 +15,10 @@
 		34F9D1862CCDD4D0002CE566 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 34F9D1852CCDD4D0002CE566 /* Base */; };
 		34F9D18E2CCDD5EA002CE566 /* InternetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D18D2CCDD5EA002CE566 /* InternetMonitor.swift */; };
 		34F9D1902CCDDCF6002CE566 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D18F2CCDDCF6002CE566 /* DataManager.swift */; };
+		34F9D1972CCDE8A5002CE566 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D1962CCDE8A5002CE566 /* Drink.swift */; };
+		34F9D1992CCDE8FD002CE566 /* DrinksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D1982CCDE8FD002CE566 /* DrinksListViewController.swift */; };
+		34F9D19B2CCDE9D7002CE566 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D19A2CCDE9D7002CE566 /* RecipeViewController.swift */; };
+		34F9D1A12CCDF4E1002CE566 /* BarmanDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D19F2CCDF4E1002CE566 /* BarmanDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		34F9D1872CCDD4D0002CE566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34F9D18D2CCDD5EA002CE566 /* InternetMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetMonitor.swift; sourceTree = "<group>"; };
 		34F9D18F2CCDDCF6002CE566 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		34F9D1962CCDE8A5002CE566 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		34F9D1982CCDE8FD002CE566 /* DrinksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksListViewController.swift; sourceTree = "<group>"; };
+		34F9D19A2CCDE9D7002CE566 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		34F9D1A02CCDF4E1002CE566 /* BarmanDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BarmanDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				34F9D1792CCDD4CF002CE566 /* AppDelegate.swift */,
+				34F9D1962CCDE8A5002CE566 /* Drink.swift */,
 				34F9D17B2CCDD4CF002CE566 /* SceneDelegate.swift */,
 				34F9D17D2CCDD4CF002CE566 /* ViewController.swift */,
 				34F9D17F2CCDD4CF002CE566 /* Main.storyboard */,
@@ -69,6 +78,9 @@
 				34F9D1872CCDD4D0002CE566 /* Info.plist */,
 				34F9D18D2CCDD5EA002CE566 /* InternetMonitor.swift */,
 				34F9D18F2CCDDCF6002CE566 /* DataManager.swift */,
+				34F9D1982CCDE8FD002CE566 /* DrinksListViewController.swift */,
+				34F9D19A2CCDE9D7002CE566 /* RecipeViewController.swift */,
+				34F9D19F2CCDF4E1002CE566 /* BarmanDataModel.xcdatamodeld */,
 			);
 			path = "Final Project Barman";
 			sourceTree = "<group>";
@@ -146,9 +158,13 @@
 			files = (
 				34F9D17E2CCDD4CF002CE566 /* ViewController.swift in Sources */,
 				34F9D1902CCDDCF6002CE566 /* DataManager.swift in Sources */,
+				34F9D1992CCDE8FD002CE566 /* DrinksListViewController.swift in Sources */,
 				34F9D18E2CCDD5EA002CE566 /* InternetMonitor.swift in Sources */,
+				34F9D19B2CCDE9D7002CE566 /* RecipeViewController.swift in Sources */,
 				34F9D17A2CCDD4CF002CE566 /* AppDelegate.swift in Sources */,
+				34F9D1972CCDE8A5002CE566 /* Drink.swift in Sources */,
 				34F9D17C2CCDD4CF002CE566 /* SceneDelegate.swift in Sources */,
+				34F9D1A12CCDF4E1002CE566 /* BarmanDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +387,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		34F9D19F2CCDF4E1002CE566 /* BarmanDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				34F9D1A02CCDF4E1002CE566 /* BarmanDataModel.xcdatamodel */,
+			);
+			currentVersion = 34F9D1A02CCDF4E1002CE566 /* BarmanDataModel.xcdatamodel */;
+			path = BarmanDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 34F9D16E2CCDD4CF002CE566 /* Project object */;
 }

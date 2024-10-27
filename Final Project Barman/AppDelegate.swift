@@ -4,17 +4,20 @@
 //  Final Project Barman
 //
 //  Created by Carlos Ignacio Padilla Herrera on 26/10/24.
-//
+// AppDelegate.swift
 
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    var window: UIWindow?  // Add this line
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       // Override point for customization after application launch.
+       
        return true
     }
+
+
 
     // MARK: UISceneSession Lifecycle
 

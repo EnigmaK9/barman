@@ -56,7 +56,18 @@ class ViewController: UIViewController {
             // Load content into the WebView
             let request = URLRequest(url: url)
             webView.load(request)
-            DataManager.shared.saveImage(url)
+            
+            // Extract the image name from the URL
+            let imageName = url.lastPathComponent
+            
+            // Call saveImage with the correct parameter and completion handler
+            DataManager.shared.saveImage(imageName) { savedURL in
+                if let savedURL = savedURL {
+                    print("Image saved at \(savedURL)")
+                } else {
+                    print("Failed to save image")
+                }
+            }
         }
     }
 }
