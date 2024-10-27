@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		346481062CCE0F0F0091A22F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 346481052CCE0F0F0091A22F /* WebKit.framework */; };
 		348A0CCD2CCE02BB00899EDD /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348A0CCC2CCE02BB00899EDD /* DrinkTableViewCell.swift */; };
 		34F9D17A2CCDD4CF002CE566 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D1792CCDD4CF002CE566 /* AppDelegate.swift */; };
 		34F9D17C2CCDD4CF002CE566 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D17B2CCDD4CF002CE566 /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		346481052CCE0F0F0091A22F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		348A0CCC2CCE02BB00899EDD /* DrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewCell.swift; sourceTree = "<group>"; };
 		34F9D1762CCDD4CF002CE566 /* Final Project Barman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Project Barman.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F9D1792CCDD4CF002CE566 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,17 +47,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				346481062CCE0F0F0091A22F /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		346481042CCE0F0F0091A22F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				346481052CCE0F0F0091A22F /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		34F9D16D2CCDD4CF002CE566 = {
 			isa = PBXGroup;
 			children = (
 				34F9D1782CCDD4CF002CE566 /* Final Project Barman */,
 				34F9D1772CCDD4CF002CE566 /* Products */,
+				346481042CCE0F0F0091A22F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

@@ -41,8 +41,6 @@
                             <constraint firstItem="CTh-AH-8SG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="C5b-hz-Hkv"/>
                             <constraint firstItem="dkc-HG-odg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FHQ-2s-cbI"/>
                             <constraint firstItem="CTh-AH-8SG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-310.5" id="Glu-b3-A7J"/>
-                            <constraint firstItem="CTh-AH-8SG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="K7M-Ua-iKx"/>
-                            <constraint firstItem="CTh-AH-8SG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Rbr-W5-2CJ"/>
                             <constraint firstItem="dkc-HG-odg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="TOr-6W-xsd"/>
                         </constraints>
                     </view>
@@ -55,7 +53,7 @@
     <resources>
         <image name="wineglass" catalog="system" width="95" height="128"/>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
