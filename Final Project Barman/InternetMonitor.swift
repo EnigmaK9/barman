@@ -1,3 +1,4 @@
+// InternetMonitor.swift
 //
 //  InternetMonitor.swift
 //  RemoteData
@@ -9,19 +10,19 @@ import Foundation
 import Network
 
 class InternetMonitor {
-    // Decidir si me sirve que sea un singleton
-    var hayConexion = false
-    var tipoConexionWiFi = false
+    // It should be decided whether this should be a singleton
+    var hasConnection = false
+    var isConnectionWiFi = false
     private var monitor = NWPathMonitor()
-    
+
     init() {
-        // que debe de hacer cuando cambie el estado de la conexion...
-        monitor.pathUpdateHandler = { ruta in
-            self.hayConexion = ruta.status == .satisfied
-            self.tipoConexionWiFi = ruta.usesInterfaceType(.wifi)
-        }
-        // para que comienze a revisar si hay cambios...
-        // los procesos que pueden tomar mucho tiempo o muchos recursos se DEBEN mandar a background
-        monitor.start(queue:DispatchQueue.global(qos: .background))
+       // Actions to perform when the connection status changes...
+       monitor.pathUpdateHandler = { path in
+           self.hasConnection = path.status == .satisfied
+           self.isConnectionWiFi = path.usesInterfaceType(.wifi)
+       }
+       // To start monitoring for changes...
+       // Processes that may take a long time or many resources must be sent to the background
+       monitor.start(queue: DispatchQueue.global(qos: .background))
     }
 }
