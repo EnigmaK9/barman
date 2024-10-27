@@ -1,8 +1,16 @@
-// DrinksListViewController.swift
-// Created by Carlos Ignacio Padilla Herrera on 26/10/2024
 //
-// This view controller is responsible for displaying a list of drinks.
-// It uses a UITableView to show the drinks and a navigation bar button to allow the user to add new drinks.
+//  DrinksListViewController.swift
+//  Project Barman
+//
+//  Created by Carlos Ignacio Padilla Herrera on 26/10/2024.
+//
+//  Description: This view controller is responsible for displaying a list of drinks using a UITableView. It allows users to add new drinks and view details of selected drinks.
+//
+//  Created for: Enigma Unit
+//  Version: 1.0.0
+//  Copyright © 2024 Enigma Unit. All rights reserved.
+//
+
 
 import UIKit
 

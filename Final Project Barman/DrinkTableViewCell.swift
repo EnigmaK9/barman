@@ -1,9 +1,15 @@
-// DrinkTableViewCell.swift
-// Created by Carlos Ignacio Padilla Herrera on 26/10/2024
 //
-// This custom table view cell is used to display drink information within a list.
-// It includes an image view for the drink's image and a label for the drink's name.
-
+//  DrinkTableViewCell.swift
+//  Project Barman
+//
+//  Created by Carlos Ignacio Padilla Herrera on 26/10/2024.
+//
+//  Description: This custom table view cell is used to display drink information, including an image and the drink's name, in a visually appealing layout with a background container and rounded image corners.
+//
+//  Created for: Enigma Unit
+//  Version: 1.0.0
+//  Copyright © 2024 Enigma Unit. All rights reserved.
+//
 import UIKit
 
 // The DrinkTableViewCell class is declared, inheriting from UITableViewCell.

@@ -1,3 +1,19 @@
+//
+//  DataManager.swift
+//  Project Barman
+//
+//  Created by Carlos Ignacio Padilla Herrera on 26/10/24.
+//
+//  Description: The DataManager class handles data management, including drink data and image retrieval, and persists user drinks using Core Data. It also manages downloading and caching images from a remote source.
+//
+//  Created for: Enigma Unit
+//  Version: 1.0.0
+//  Copyright © 2024 Enigma Unit. All rights reserved.
+//
+
+
+
+
 // The Foundation, Core Data, and UIKit frameworks are imported.
 // Foundation provides basic functionalities for apps, Core Data is used for data persistence, and UIKit is used to handle images.
 import Foundation

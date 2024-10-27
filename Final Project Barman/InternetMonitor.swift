@@ -1,3 +1,18 @@
+//
+//  InternetMonitor.swift
+//  Project Barman
+//
+//  Created by Carlos Ignacio Padilla Herrera on 26/10/24.
+//
+//  Description: A singleton class is used to monitor the device’s internet connection and determine if the connection is available and whether it is using Wi-Fi.
+//
+//  Created for: Enigma Unit
+//  Version: 1.0.0
+//  Copyright © 2024 Enigma Unit. All rights reserved.
+//
+
+
+
 // The Foundation and Network frameworks are imported.
 // Foundation provides basic functionalities for apps, and Network is used to monitor network changes.
 import Foundation

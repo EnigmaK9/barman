@@ -1,12 +1,16 @@
-// SceneDelegate.swift
 //
 //  SceneDelegate.swift
-//  Final Project Barman
+//  Project Barman
 //
 //  Created by Carlos Ignacio Padilla Herrera on 26/10/24.
 //
+//  Description: The scene delegate is responsible for managing the lifecycle of the app's scenes, including window setup and state transitions.
+//
+//  Created for: Enigma Unit
+//  Version: 1.0.0
+//  Copyright © 2024 Enigma Unit. All rights reserved.
+//
 
-// SceneDelegate.swift
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

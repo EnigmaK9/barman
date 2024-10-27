@@ -1,6 +1,15 @@
-// RecipeViewController.swift
-// This view controller is responsible for displaying a single recipe or allowing the user to add a new recipe.
-
+//
+//  RecipeViewController.swift
+//  Project Barman
+//
+//  Created by Carlos Ignacio Padilla Herrera on 26/10/2024.
+//
+//  Description: This view controller is responsible for displaying a single recipe or allowing the user to add a new recipe. It provides UI for entering the name, ingredients, and directions of a drink, and handles saving new recipes to DataManager.
+//
+//  Created for: Enigma Unit
+//  Version: 1.0.0
+//  Copyright © 2024 Enigma Unit. All rights reserved.
+//
 import UIKit
 
 // The RecipeViewController class is declared, inheriting from UIViewController.
