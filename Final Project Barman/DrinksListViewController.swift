@@ -8,8 +8,8 @@ class DrinksListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Drinks"
-        view.backgroundColor = .white
+        self.title = "Barman's Drinks"
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "bar_background")!) // Imagen de fondo
         setupTableView()
         setupNavigationBar()
         fetchDrinksData()
@@ -22,9 +22,11 @@ class DrinksListViewController: UIViewController {
 
     func setupTableView() {
         tableView.frame = view.bounds
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DrinkCell")
+        tableView.backgroundColor = .clear
+        tableView.register(DrinkTableViewCell.self, forCellReuseIdentifier: "DrinkCell")
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         view.addSubview(tableView)
     }
 
@@ -32,6 +34,8 @@ class DrinksListViewController: UIViewController {
         addButton.target = self
         addButton.action = #selector(addButtonTapped)
         navigationItem.rightBarButtonItem = addButton
+        navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
 
     func fetchDrinksData() {
@@ -40,7 +44,7 @@ class DrinksListViewController: UIViewController {
                 if drinks != nil {
                     self?.tableView.reloadData()
                 } else {
-                    // Handle error (e.g., show alert)
+                    // Manejo de errores (e.g., mostrar alerta)
                 }
             }
         }
@@ -54,20 +58,22 @@ class DrinksListViewController: UIViewController {
 }
 
 extension DrinksListViewController: UITableViewDataSource, UITableViewDelegate {
-    // Data Source Methods
+    // Métodos de Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataManager.shared.drinks.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkCell", for: indexPath) as? DrinkTableViewCell else {
+            return UITableViewCell()
+        }
         let drink = DataManager.shared.drinks[indexPath.row]
-        cell.textLabel?.text = drink.name
+        cell.configure(with: drink)
         return cell
     }
 
-    // Delegate Methods
+    // Métodos de Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let drink = DataManager.shared.drinks[indexPath.row]
         let recipeVC = RecipeViewController()
