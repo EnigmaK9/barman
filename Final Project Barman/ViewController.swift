@@ -1,27 +1,16 @@
 // ViewController.swift
-//
-//  ViewController.swift
-//  RemoteData
-//
-//  Created by Carlos Padilla on 26/10/24.
-//
 
 import UIKit
-import WebKit
 
 class ViewController: UIViewController {
-    let internetMonitor = InternetMonitor()
-    let webView = WKWebView()
-    let activityIndicator = UIActivityIndicatorView()
+    let internetMonitor = InternetMonitor.shared
+    let imageView = UIImageView()
+    let activityIndicator = UIActivityIndicatorView(style: .large)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.frame = self.view.bounds
-        self.view.addSubview(webView)
-        self.view.addSubview(activityIndicator)
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.center = view.center
-        webView.navigationDelegate = self
+        setupImageView()
+        setupActivityIndicator()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -50,35 +39,40 @@ class ViewController: UIViewController {
         }
     }
 
+    func setupImageView() {
+        imageView.frame = self.view.bounds
+        imageView.contentMode = .scaleAspectFit
+        self.view.addSubview(imageView)
+    }
+
+    func setupActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+    }
+
     func loadImage() {
         activityIndicator.startAnimating()
-        if let url = URL(string: "http://janzelaznog.com/DDAM/iOS/drinksimages/1.jpg") {
-            // Load content into the WebView
-            let request = URLRequest(url: url)
-            webView.load(request)
-            
+        let imageURLString = "http://janzelaznog.com/DDAM/iOS/drinksimages/1.jpg"
+        if let url = URL(string: imageURLString) {
             // Extract the image name from the URL
             let imageName = url.lastPathComponent
             
-            // Call saveImage with the correct parameter and completion handler
-            DataManager.shared.saveImage(imageName) { savedURL in
-                if let savedURL = savedURL {
-                    print("Image saved at \(savedURL)")
-                } else {
-                    print("Failed to save image")
+            // Use getImage to retrieve the image
+            DataManager.shared.getImage(for: imageName) { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
+                    if let image = image {
+                        self?.imageView.image = image
+                    } else {
+                        // Handle the error (e.g., display an alert or placeholder image)
+                        self?.imageView.image = UIImage(named: "placeholder")
+                        let alert = UIAlertController(title: "Error", message: "Failed to load image.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default))
+                        self?.present(alert, animated: true)
+                    }
                 }
             }
         }
-    }
-}
-
-// Extension to add WKNavigationDelegate methods
-extension ViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.activityIndicator.stopAnimating()
-    }
-
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        self.activityIndicator.stopAnimating()
     }
 }

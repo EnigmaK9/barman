@@ -151,16 +151,17 @@ class RecipeViewController: UIViewController {
         saveButton.isHidden = true  // Hide the save button when viewing a recipe
         
         // Load the image
-        DataManager.shared.saveImage(drink.img) { [weak self] fileURL in
+        DataManager.shared.getImage(for: drink.img) { [weak self] image in
             DispatchQueue.main.async {
-                if let fileURL = fileURL {
-                    self?.imageView.image = UIImage(contentsOfFile: fileURL.path)
+                if let image = image {
+                    self?.imageView.image = image
                 } else {
                     self?.imageView.image = UIImage(named: "placeholder")  // Use a placeholder image if needed
                 }
             }
         }
     }
+
 
     func setupForNewRecipe() {
         // Enable fields for editing
@@ -198,5 +199,6 @@ class RecipeViewController: UIViewController {
         // Navigate back to the drinks list
         navigationController?.popViewController(animated: true)
     }
+
 
 }

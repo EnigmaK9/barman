@@ -1,38 +1,42 @@
 // DataManager.swift
 
-// DataManager.swift
-
 import Foundation
-import CoreData  // Import Core Data
+import CoreData  // Importar Core Data
+import UIKit     // Importar UIKit para manejar imágenes
 
 class DataManager: NSObject {
     static let shared = DataManager()
     private override init() {
         super.init()
-        fetchDrinksFromCoreData()  // Load existing drinks
+        fetchDrinksFromCoreData()  // Cargar las bebidas del usuario
     }
 
-    var drinks: [Drink] = []
+    var downloadedDrinks: [Drink] = []
+    var userDrinks: [Drink] = []
 
-    // Core Data persistent container
+    var drinks: [Drink] {
+        return downloadedDrinks + userDrinks
+    }
+
+    // Contenedor persistente de Core Data
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "BarmanDataModel")  // Replace with your model name
+        let container = NSPersistentContainer(name: "BarmanDataModel")  // Asegúrate de que este nombre coincida con tu modelo
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
-                // Handle error appropriately
+                // Manejo de errores
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
         return container
     }()
 
-    // Download drinks data
+    // Descargar datos de bebidas
     func downloadDrinksData(completion: @escaping ([Drink]?) -> Void) {
         if let url = URL(string: "http://janzelaznog.com/DDAM/iOS/drinks.json") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { [weak self] data, response, error in
                 if let error = error {
-                    print("Error downloading drinks data: \(error.localizedDescription)")
+                    print("Error al descargar los datos de bebidas: \(error.localizedDescription)")
                     completion(nil)
                     return
                 }
@@ -41,11 +45,11 @@ class DataManager: NSObject {
                         let decoder = JSONDecoder()
                         let downloadedDrinks = try decoder.decode([Drink].self, from: data)
                         DispatchQueue.main.async {
-                            self?.drinks += downloadedDrinks  // Combine with existing drinks
+                            self?.downloadedDrinks = downloadedDrinks  // Actualizar las bebidas descargadas
                             completion(self?.drinks)
                         }
                     } catch {
-                        print("Error parsing drinks data: \(error.localizedDescription)")
+                        print("Error al analizar los datos de bebidas: \(error.localizedDescription)")
                         completion(nil)
                     }
                 }
@@ -54,48 +58,74 @@ class DataManager: NSObject {
         }
     }
 
-    // Save image
-    func saveImage(_ imageName: String, completion: @escaping (URL?) -> Void) {
-        let urlString = "http://janzelaznog.com/DDAM/iOS/drinksimages/\(imageName)"
-        if let url = URL(string: urlString),
-           let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let fileURL = documentsURL.appendingPathComponent(url.lastPathComponent)
+    // Obtener imagen (carga y cacheo)
+    func getImage(for imageName: String, completion: @escaping (UIImage?) -> Void) {
+        if imageName.isEmpty {
+            completion(nil)
+            return
+        }
+
+        if let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = documentsURL.appendingPathComponent(imageName)
             if FileManager.default.fileExists(atPath: fileURL.path) {
-                completion(fileURL)
+                // La imagen existe localmente
+                let image = UIImage(contentsOfFile: fileURL.path)
+                completion(image)
             } else {
-                let session = URLSession(configuration: .default)
-                let task = session.dataTask(with: url) { data, response, error in
-                    if let error = error {
-                        print("Error downloading image: \(error.localizedDescription)")
+                // Descargar la imagen
+                downloadImage(imageName: imageName) { success in
+                    if success {
+                        let image = UIImage(contentsOfFile: fileURL.path)
+                        completion(image)
+                    } else {
                         completion(nil)
-                        return
-                    }
-                    if let data = data {
-                        do {
-                            try data.write(to: fileURL)
-                            completion(fileURL)
-                        } catch {
-                            print("Error saving image: \(error.localizedDescription)")
-                            completion(nil)
-                        }
                     }
                 }
-                task.resume()
             }
         } else {
             completion(nil)
         }
     }
 
-    // MARK: - Core Data Methods
+    private func downloadImage(imageName: String, completion: @escaping (Bool) -> Void) {
+        let urlString = "http://janzelaznog.com/DDAM/iOS/drinksimages/\(imageName)"
+        if let url = URL(string: urlString) {
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    print("Error al descargar la imagen: \(error.localizedDescription)")
+                    completion(false)
+                    return
+                }
+                if let data = data,
+                   let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                    let fileURL = documentsURL.appendingPathComponent(imageName)
+                    do {
+                        try data.write(to: fileURL)
+                        completion(true)
+                    } catch {
+                        print("Error al guardar la imagen: \(error.localizedDescription)")
+                        completion(false)
+                    }
+                } else {
+                    completion(false)
+                }
+            }
+            task.resume()
+        } else {
+            completion(false)
+        }
+    }
 
-    // Fetch drinks from Core Data
+    // MARK: - Métodos de Core Data
+
+    // Obtener bebidas desde Core Data
     func fetchDrinksFromCoreData() {
         let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "DrinkEntity")
         do {
             let drinkEntities = try context.fetch(fetchRequest)
-            drinks = drinkEntities.map { entity in
+            userDrinks = drinkEntities.map { entity in
                 Drink(
                     name: entity.value(forKey: "name") as? String ?? "",
                     ingredients: entity.value(forKey: "ingredients") as? String ?? "",
@@ -104,11 +134,11 @@ class DataManager: NSObject {
                 )
             }
         } catch {
-            print("Error fetching drinks from Core Data: \(error.localizedDescription)")
+            print("Error al obtener las bebidas desde Core Data: \(error.localizedDescription)")
         }
     }
 
-    // Add user drink to Core Data
+    // Agregar bebida del usuario a Core Data
     func addUserDrink(_ drink: Drink) {
         let context = persistentContainer.viewContext
         let drinkEntity = NSEntityDescription.insertNewObject(forEntityName: "DrinkEntity", into: context)
@@ -118,10 +148,9 @@ class DataManager: NSObject {
         drinkEntity.setValue(drink.img, forKey: "img")
         do {
             try context.save()
-            fetchDrinksFromCoreData()  // Refresh drinks array
+            fetchDrinksFromCoreData()  // Actualizar el array de userDrinks
         } catch {
-            print("Error saving user drink to Core Data: \(error.localizedDescription)")
+            print("Error al guardar la bebida del usuario en Core Data: \(error.localizedDescription)")
         }
     }
 }
-
