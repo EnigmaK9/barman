@@ -13,6 +13,8 @@
 		34F9D1812CCDD4CF002CE566 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 34F9D1802CCDD4CF002CE566 /* Base */; };
 		34F9D1832CCDD4D0002CE566 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34F9D1822CCDD4D0002CE566 /* Assets.xcassets */; };
 		34F9D1862CCDD4D0002CE566 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 34F9D1852CCDD4D0002CE566 /* Base */; };
+		34F9D18E2CCDD5EA002CE566 /* InternetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D18D2CCDD5EA002CE566 /* InternetMonitor.swift */; };
+		34F9D1902CCDDCF6002CE566 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F9D18F2CCDDCF6002CE566 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		34F9D1822CCDD4D0002CE566 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34F9D1852CCDD4D0002CE566 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34F9D1872CCDD4D0002CE566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34F9D18D2CCDD5EA002CE566 /* InternetMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetMonitor.swift; sourceTree = "<group>"; };
+		34F9D18F2CCDDCF6002CE566 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				34F9D1822CCDD4D0002CE566 /* Assets.xcassets */,
 				34F9D1842CCDD4D0002CE566 /* LaunchScreen.storyboard */,
 				34F9D1872CCDD4D0002CE566 /* Info.plist */,
+				34F9D18D2CCDD5EA002CE566 /* InternetMonitor.swift */,
+				34F9D18F2CCDDCF6002CE566 /* DataManager.swift */,
 			);
 			path = "Final Project Barman";
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				34F9D17E2CCDD4CF002CE566 /* ViewController.swift in Sources */,
+				34F9D1902CCDDCF6002CE566 /* DataManager.swift in Sources */,
+				34F9D18E2CCDD5EA002CE566 /* InternetMonitor.swift in Sources */,
 				34F9D17A2CCDD4CF002CE566 /* AppDelegate.swift in Sources */,
 				34F9D17C2CCDD4CF002CE566 /* SceneDelegate.swift in Sources */,
 			);
